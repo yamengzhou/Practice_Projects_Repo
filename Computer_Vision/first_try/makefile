@@ -10,9 +10,10 @@ program_INCLUDE_DIRS := /usr/local/Cellar/opencv/2.4.12_2/include
 program_LIBRARY_DIRS := /usr/local/Cellar/opencv/2.4.12_2/lib
 program_LIBRARIES := opencv_core opencv_imgproc 
 
-CPPFLAGS += $(foreach includedir, $(program_INCLUDE_DIRS),-I$(includedir))
-LDFLAGS += $(foreach librarydir, $(program_LIBRARY_DIRS),-L$(librarydir))
-LDFLAGS += $(foreach library, $(program_LIBRARIES),-l(library))
+CPPFLAGS += `pkg-config --cflags --libs opencv`
+CPPFLAGS += $(foreach includedir,$(program_INCLUDE_DIRS),-I$(includedir))
+LDFLAGS += $(foreach librarydir,$(program_LIBRARY_DIRS),-L$(librarydir))
+LDFLAGS += $(foreach library,$(program_LIBRARIES),-l$(library))
 
 .PHONY: all clean distclean
 
@@ -30,6 +31,6 @@ distclean: clean
 define OBJECT_DEPENDS_ON_CORRESPONDING_HEADER
 	$(1) : ${1:.o=.h}
 endef
-	$(foreach object_file,$(program_OBJS),$(eval$(call OBJECT_DEPENDS_ON_CORRESPONDING_HEADER,$(object_file))))
+	$(foreach object_file,$(program_OBJS),$(eval $(call OBJECT_DEPENDS_ON_CORRESPONDING_HEADER,$(object_file))))
 
 
