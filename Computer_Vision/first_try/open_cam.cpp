@@ -28,7 +28,7 @@ int main(int argc, char** argv){
 
 		imshow("Testing_Window",frame);
 
-		if(waitKey(30)==27){
+		if(waitKey(30)=='q'){
 			cout << "esc key is pressed by user" << endl;
 			break;
 		}
