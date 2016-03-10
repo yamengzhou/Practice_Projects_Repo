@@ -6,9 +6,9 @@ program_CXX_SRCS := $(wildcard *.cpp)
 program_C_OBJS := ${program_C_SRCS:.c=.o}
 program_CXX_OBJS := ${program_CXX_SRCS:.cpp=.o}
 program_OBJS := $(program_C_OBJS) $(program_CXX_OBJS)
-program_INCLUDE_DIRS := 
+program_INCLUDE_DIRS := /usr/local/Cellar/glm/0.9.7.1/include 
 program_LIBRARY_DIRS := /System/Library/Frameworks/OpenGL.framework/Libraries
-program_LIBRARIES := GL GLU m objc stdc++
+program_LIBRARIES := GL GLU m objc stdc++ 
 
 CPPFLAGS += -framework GLUT
 CPPFLAGS += -framework OpenGL
